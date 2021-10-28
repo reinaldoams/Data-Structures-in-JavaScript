@@ -143,22 +143,24 @@ class SinglyLinkedList {
     }
 }
 
-let lista = new SinglyLinkedList();
-lista.push('um')
-lista.push('dois')
-lista.push('três')
-lista.push('quatro')
-lista.remove(4);
-lista.reverse();
+// example of some implementations
 
-function print(linkedList){
-    let arr = [];
-    let curr = linkedList.head;
-    for (let i = 0; i<linkedList.length;i++){
-        arr.push(curr.val);
-        curr = curr.next;
-    }
-    return arr;
-}
+// let lista = new SinglyLinkedList();
+// lista.push('um')
+// lista.push('dois')
+// lista.push('três')
+// lista.push('quatro')
+// lista.remove(4);
+// lista.reverse();
 
-console.log(print(lista))
+// auxiliary function for seeing results:
+
+// function print(linkedList){
+//     let arr = [];
+//     let curr = linkedList.head;
+//     for (let i = 0; i<linkedList.length;i++){
+//         arr.push(curr.val);
+//         curr = curr.next;
+//     }
+//     return arr;
+// }
