@@ -101,19 +101,3 @@ class SinglyLinkedList {
         return newNode;
     }
 }
-
-let lista = new SinglyLinkedList();
-lista.push('cauda');
-lista.unshift('qse fim');
-lista.unshift('meio');
-lista.unshift('cabeça');
-lista.set(2, 'ola')
-lista.insert(3, 'NOVO fim')
-
-
-console.log(lista.get(0))
-console.log(lista.get(1))
-console.log(lista.get(2))
-console.log(lista.get(3))
-console.log(lista.get(4))
-console.log(lista)
