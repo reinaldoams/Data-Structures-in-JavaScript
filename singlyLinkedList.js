@@ -123,6 +123,7 @@ class SinglyLinkedList {
     }
     reverse() {
         this.tail = this.head;
+        this.tail = null;
 
         let prev = this.head;
         let curr = this.head.next;
@@ -143,24 +144,24 @@ class SinglyLinkedList {
     }
 }
 
-// example of some implementations
+let lista = new SinglyLinkedList();
+lista.push('um')
+lista.push('dois')
+lista.push('três')
+lista.push('quatro')
+lista.remove(4);
+lista.reverse();
 
-// let lista = new SinglyLinkedList();
-// lista.push('um')
-// lista.push('dois')
-// lista.push('três')
-// lista.push('quatro')
-// lista.remove(4);
-// lista.reverse();
 
-// auxiliary function for seeing results:
 
-// function print(linkedList){
-//     let arr = [];
-//     let curr = linkedList.head;
-//     for (let i = 0; i<linkedList.length;i++){
-//         arr.push(curr.val);
-//         curr = curr.next;
-//     }
-//     return arr;
-// }
+ function print(linkedList){
+     let arr = [];
+     let curr = linkedList.head;
+     for (let i = 0; i<linkedList.length;i++){
+         arr.push(curr.val);
+         curr = curr.next;
+     }
+     return arr;
+ }
+
+ console.log(lista)
