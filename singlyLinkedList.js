@@ -103,22 +103,62 @@ class SinglyLinkedList {
         return newNode;
     }
     remove(index) {
-        if (index < 0 || index > this.length) {
+        if (index < 0 || index >= this.length) {
             return false;
         }
         let toRemove = '';
-        if (index === this.length) {
-            let toRemove = this.tail;
+        if (index === this.length - 1) {
+            toRemove = this.tail;
             this.pop();
         } else if (index === 0) {
-            let toRemove = this.head;
+            toRemove = this.head;
             this.shift();
         } else {
             let prev = this.get(index - 1);
-            let toRemove = prev.next;
-            prev.next = prev.next.next;
+            toRemove = prev.next;
+            prev.next = toRemove.next;
             this.length--;
         }
         return toRemove;
     }
+    reverse() {
+        this.tail = this.head;
+
+        let prev = this.head;
+        let curr = this.head.next;
+        let next = curr.next;
+
+        while (curr.next) {
+            curr.next = prev;
+
+            prev = curr;
+            curr = next;
+            next = curr.next;
+        }
+        
+        curr.next = prev;
+        this.tail = curr;
+
+        return this;
+    }
 }
+
+let lista = new SinglyLinkedList();
+lista.push('um')
+lista.push('dois')
+lista.push('três')
+lista.push('quatro')
+lista.remove(4);
+// lista.reverse();
+
+function print(linkedList){
+    let arr = [];
+    let curr = linkedList.head;
+    for (let i = 0; i<linkedList.length;i++){
+        arr.push(curr.val);
+        curr = curr.next;
+    }
+    return arr;
+}
+
+console.log(print(lista))
