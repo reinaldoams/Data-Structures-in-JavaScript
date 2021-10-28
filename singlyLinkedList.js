@@ -137,7 +137,7 @@ class SinglyLinkedList {
         }
         
         curr.next = prev;
-        this.tail = curr;
+        this.head = curr;
 
         return this;
     }
@@ -149,7 +149,7 @@ lista.push('dois')
 lista.push('três')
 lista.push('quatro')
 lista.remove(4);
-// lista.reverse();
+lista.reverse();
 
 function print(linkedList){
     let arr = [];
