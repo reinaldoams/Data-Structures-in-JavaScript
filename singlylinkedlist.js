@@ -106,13 +106,19 @@ class SinglyLinkedList {
         if (index < 0 || index > this.length) {
             return false;
         }
+        let toRemove = '';
         if (index === this.length) {
+            let toRemove = this.tail;
             this.pop();
         } else if (index === 0) {
+            let toRemove = this.head;
             this.shift();
         } else {
             let prev = this.get(index - 1);
+            let toRemove = prev.next;
             prev.next = prev.next.next;
+            this.length--;
         }
+        return toRemove;
     }
 }
