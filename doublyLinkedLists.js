@@ -26,23 +26,25 @@ class DoublyLinkedList {
         return this;
     }
     pop() {
-        if (!this.tail){
+        let oldTail = this.tail;
+        if (!oldTail){
             return undefined
         } else if (this.length === 1) {
             this.head = null;
             this.tail = null;
         } else {
-            oldTail = this.tail;
-            oldTail.prev = null
             this.tail = oldTail.prev;
+            oldTail.prev = null
             this.tail.next = null;
         }
         this.length--;
-        return this;
+        return oldTail.val;
     }
 }
 
 let lista = new DoublyLinkedList();
 lista.push('oi');
 lista.push('td');
+lista.pop();
+lista.pop();
 console.log(lista);
