@@ -69,31 +69,46 @@ class DoublyLinkedList {
         return this;
     }
     get(index) {
-        if (index < 0 || index >= this.length){
+        if (index < 0 || index >= this.length) {
             return null;
         }
-        if (index > Math.floor((this.length -1)/2)){
+        if (index > Math.floor((this.length - 1) / 2)) {
             let current = this.tail;
-            for (let i = this.length-1; i>=0; i--){
-                if (i === index){
+            for (let i = this.length - 1; i >= 0; i--) {
+                if (i === index) {
                     return current;
                 } else {
-                    console.log(current.val);
                     current = current.prev;
                 }
             }
         } else {
             let current = this.head;
-            for (let i = 0; i<this.length;i++){
-                if (i === index){
+            for (let i = 0; i < this.length; i++) {
+                if (i === index) {
                     return current
                 } else {
-                    console.log(current.val)
-                    current = current.next;                    
+                    current = current.next;
                 }
             }
         }
     }
+    set(value, index) {
+        let toChange = this.get(index);
+        if (toChange) {
+            toChange.val = value;
+            return true;
+        } return false;
+    }
+}
+
+function print(linkedList) {
+    let arr = [];
+    let curr = linkedList.head;
+    while (curr){
+        arr.push(curr.val);
+        curr = curr.next
+    }
+    console.log(arr)
 }
 
 let lista = new DoublyLinkedList();
@@ -107,10 +122,13 @@ lista.push('oi7');
 lista.push('oi8');
 lista.push('oi9');
 lista.push('oi10');
+print(lista);
+console.log(lista.set('changing', 5));
+print(lista);
 
 // console.log(lista.get(-1));
 // console.log(lista.get(4).val);
-console.log(lista.get(4).val);
+// console.log(lista.get(4).val);
 // console.log(lista.get(2).val);
 // console.log(lista.get(1).val);
 // console.log(lista.get(0).val);
