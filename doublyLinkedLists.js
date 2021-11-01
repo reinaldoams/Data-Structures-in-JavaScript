@@ -99,32 +99,96 @@ class DoublyLinkedList {
             return true;
         } return false;
     }
+    insert(value, index) {
+        if (index < 0 || index >= this.length) {
+            return false;
+        } else if (index === 0) {
+            return this.unshift(value);
+        } else if (index === this.length) {
+            return this.push(value);
+        } else {
+            let newNode = new Node(value);
+            let newNodePrev = this.get(index - 1);
+            let newNodeNext = this.get(index);
+            newNodePrev.next = newNode;
+            newNodeNext.prev = newNode;
+            newNode.prev = newNodePrev;
+            newNode.next = newNodeNext;
+            this.length++;
+            return true;
+        }
+    }
+    remove(index) {
+        if (index < 0 || index >= this.length) {
+            return undefined
+        } else if (index === 0) {
+            return this.shift;
+        } else if (index === this.length - 1) {
+            return this.pop;
+        } else {
+            let toRemove = this.get(index);
+            if (toRemove) {
+                let temp = toRemove.next;
+                toRemove.prev.next = toRemove.next;
+                toRemove.next.prev = toRemove.prev;
+                toRemove.prev = null;
+                toRemove.next = null;
+                this.length--;
+                return toRemove;
+            }
+        }
+    }
 }
 
 function print(linkedList) {
+    let arrPrev = [];
     let arr = [];
+    let arrNext = [];
     let curr = linkedList.head;
-    while (curr){
-        arr.push(curr.val);
+    while (curr) {
+        let tempArr = [];
+        if (curr.prev) {
+            tempArr.push('p: ' + curr.prev.val)
+        } else tempArr.push('p: ' + 'null');
+        tempArr.push('c: ' + curr.val);
+        if (curr.next) {
+            tempArr.push('n: ' + curr.next.val);
+        } else tempArr.push('n: ' + 'null');
+        arr.push(tempArr);
         curr = curr.next
     }
-    console.log(arr)
+    console.log(arr);
 }
 
 let lista = new DoublyLinkedList();
-lista.push('oi1');
-lista.push('oi2');
-lista.push('oi3');
-lista.push('oi4');
-lista.push('oi5');
-lista.push('oi6');
-lista.push('oi7');
-lista.push('oi8');
-lista.push('oi9');
-lista.push('oi10');
+lista.push('item1');
+lista.push('item2');
+lista.push('item3');
+lista.push('item4');
+lista.push('item5');
+lista.push('item6');
+lista.push('item7');
+lista.push('item8');
+lista.push('item9');
+lista.push('item10');
 print(lista);
-console.log(lista.set('changing', 5));
+console.log('length: ', lista.length);
+lista.insert('addingAtZero', 0);
 print(lista);
+console.log('length: ', lista.length);
+lista.remove(3);
+console.log('removing at index 3')
+print(lista)
+console.log('length: ', lista.length);
+lista.remove(5);
+console.log('removing at index 5')
+print(lista)
+console.log('length: ', lista.length);
+lista.remove(2);
+console.log('removing at index 2')
+print(lista)
+console.log('length: ', lista.length);
+
 
 // console.log(lista.get(-1));
 // console.log(lista.get(4).val);
