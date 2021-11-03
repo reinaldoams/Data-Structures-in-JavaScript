@@ -41,12 +41,13 @@ class BinarySearchTree {
         }
         return this;
     }
-    find(val){
+    hasValue(val){
         console.log(`*****searching for ${val}...*****`)
         if (!this.root){
             return false;
         }
         let curr = this.root;
+        console.log('root: ', curr.val)
         while(true){
             if (curr.val === val){
                 return true
@@ -74,6 +75,6 @@ arvore.insert(700);
 arvore.insert(7);
 
 console.log(arvore);
-console.log(arvore.find(5))
-console.log(arvore.find(6))
-console.log(arvore.find(7))
+console.log(arvore.hasValue(5))
+console.log(arvore.hasValue(6))
+console.log(arvore.hasValue(7))
